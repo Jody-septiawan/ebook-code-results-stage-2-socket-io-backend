@@ -18,8 +18,6 @@ const io = new Server(server, {
   transports: ['websocket'],
   cors: {
     origin: '*', // we must define cors because our client and server have diffe
-    allowedHeaders: ['dumbgram-header'],
-    credentials: true,
   },
 });
 
