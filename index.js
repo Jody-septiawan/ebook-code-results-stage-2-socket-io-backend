@@ -17,7 +17,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
   transports: ['websocket'],
   cors: {
-    origin: process.env.CLIENT_URL || 'http://localhost:3000', // we must define cors because our client and server have diffe
+    origin: '*', // we must define cors because our client and server have diffe
     allowedHeaders: ['dumbgram-header'],
     credentials: true,
   },
