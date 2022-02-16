@@ -16,7 +16,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: 'https://ebook-code-results-stage-2-socket-io-frontend.vercel.app/', // we must define cors because our client and server have diffe
+    origin: process.env.CLIENT_URL || 'http://localhost:3000', // we must define cors because our client and server have diffe
     allowedHeaders: ['dumbgram-header'],
     credentials: true,
   },
@@ -31,6 +31,11 @@ app.use(express.json());
 app.use(cors());
 
 // Add endpoint grouping and router
+app.get('/', (req, res) => {
+  res.send({
+    client: process.env.CLIENT_URL,
+  });
+});
 app.use('/api/v1/', router);
 app.use('/uploads', express.static('uploads'));
 
