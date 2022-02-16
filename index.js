@@ -15,10 +15,10 @@ const app = express();
 
 const server = http.createServer(app);
 const io = new Server(server, {
+  withCredentials: true,
   cors: {
     origin: process.env.CLIENT_URL || 'http://localhost:3000', // we must define cors because our client and server have diffe
     methods: ['GET', 'POST'],
-    credentials: true,
   },
 });
 
